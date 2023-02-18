@@ -1,0 +1,17 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  flex: 50%;
+  padding: 10px;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: grey;
+}

@@ -1,0 +1,20 @@
+<div *ngIf="spots.length !== 0; else elseBlock">
+  <div class="table">
+    <div class="row">
+      <div class="column" style="font-size: 150%">Status</div>
+      <div class="column" style="font-size: 150%">Name</div>
+      <div class="column" style="font-size: 150%">Available Spot Number</div>
+      <div class="column" style="font-size: 150%">Allowed Vehicle Type <i class="fa-sharp fa-solid fa-motorcycle"></i></div>
+      <div class="column" style="font-size: 150%">Timestamp</div>
+      <div class="column" style="font-size: 150%">Potit coeur</div>
+    </div>
+
+    <div *ngFor="let spot of spots; trackBy: trackByFn">
+      <app-spot-item [spot]="spot" (spotClicked)="like($event)"></app-spot-item>
+    </div>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <p>There are no spots available.</p>
+</ng-template>

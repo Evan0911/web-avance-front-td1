@@ -1,0 +1,47 @@
+<button class="btn btn-primary" (click)="goBack()">Go back</button>
+<div *ngIf="spot">
+  <p>
+    {{ spot.status.value }}
+  </p>
+  <p>
+    {{ spot.name.value }}
+  </p>
+  <p>
+    {{ spot.availableSpotNumber.value }}
+  </p>
+  <p>
+    {{ spot.allowedVehicleType.value }}
+  </p>
+  <p>
+    <a href="{{ spot.location.value.coordinates | mapsUrl }}">
+      Carte
+    </a>
+  </p>
+  <p>
+    {{ spot.status.metadata.timestamp.value | date: 'short' }}
+  </p>
+</div>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+  [src]="spot.location.value.coordinates | mapsUrl" style="border: 1px solid black"></iframe><br /><small>
+  <a
+    href="https://www.openstreetmap.org/#map=50/{{ spot.location.value.coordinates[1] }}/{{ spot.location.value.coordinates[0] }}">Afficher
+    une carte plus grande</a>
+</small>
+
+<div>
+  <button class="btn btn-primary" (click)="share()">Partager</button>
+</div>
+
+<div class="form" *ngIf="isSharePressed">
+  <div>
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="Email" [formControl]="emailControl">
+    <p *ngIf="emailControl.invalid">Valid email address required</p>
+  </div>
+  <div>
+    <label for="message">Message</label>
+    <textarea class="form-control" id="message" rows="3" [formControl]="messageControl"></textarea>
+    <p *ngIf="messageControl.invalid">Please enter a message</p>
+  </div>
+  <button (click)="sendMessage()" class="btn btn-primary">Envoyer</button>
+</div>

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="column" scope="col">
+    {{ spot.status.value }}
+  </div>
+  <div class="column" scope="col">
+    <a [routerLink]="['/spot-detail', spot.id]">
+      {{ spot.name.value }}
+    </a>
+  </div>
+  <div class="column" scope="col">
+    {{ spot.availableSpotNumber.value }}
+  </div>
+  <div class="column" scope="col">
+    {{ spot.allowedVehicleType.value }}
+  </div>
+  <div class="column" scope="col">
+    {{ spot.status.metadata.timestamp.value | date: 'short' }}
+  </div>
+  <div class="column" scope="col">
+    <button class="btn btn-primary" (click)="onClick()">♥</button>
+  </div>
+</div>
